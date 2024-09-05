@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace OnlineShopWebApp.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
         //private readonly ILogger<HomeController> _logger;
 
@@ -15,15 +15,16 @@ namespace OnlineShopWebApp.Controllers
         //}#
        
 
-        public string Index()
+        public string Index(string id)
         {
             List<Waren> listWaren = new List<Waren>();
             for (int i = 1; i < 4; i++)
             {
                 listWaren.Add(new Waren("Id"+i, "Name"+i, "Cost"+i));
             }
-            var test = listWaren.Select(x => x.Info());
-            return String.Join(Environment.NewLine, test);
+            //var test = listWaren.Select(x => x.Info());
+            var test = listWaren.First(x => x.Id == id);
+            return String.Join(Environment.NewLine, test.Info());
         }
 
         public IActionResult Privacy()
