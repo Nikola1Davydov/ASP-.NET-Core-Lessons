@@ -4,18 +4,11 @@ using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
-    public class HomeController : Controller
+    public class CalculatorController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public string Index(double a, double b)
         {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
+            return $"{a} + {b} = {a+b}";
         }
 
         public IActionResult Privacy()
