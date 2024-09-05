@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
-    public class CalculatorController : Controller
+    public class CalcController : Controller
     {
         public string Index(double a, double b, string c = "+")
         {
@@ -12,6 +12,7 @@ namespace OnlineShopWebApp.Controllers
             if (!possibleSymbols.Contains(c)) return "ERROR";
             if (c.Equals("-")) return $"{a} - {b} = {a - b}";
             if (c.Equals("*")) return $"{a} * {b} = {a * b}";
+            if (c.Equals("/")) return $"{a} / {b} = {a / b}";
             return $"{a} + {b} = {a + b}";
             
         }

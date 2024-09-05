@@ -23,6 +23,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Calculator}/{action=Index}/{a?}/{b?}/{c?}");
+    pattern: "{controller=Calc}/{action=Index}");
 
 app.Run();
