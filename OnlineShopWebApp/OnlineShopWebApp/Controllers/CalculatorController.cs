@@ -6,9 +6,14 @@ namespace OnlineShopWebApp.Controllers
 {
     public class CalculatorController : Controller
     {
-        public string Index(double a, double b)
+        public string Index(double a, double b, string c = "+")
         {
-            return $"{a} + {b} = {a+b}";
+            string possibleSymbols = "+-*/";
+            if (!possibleSymbols.Contains(c)) return "ERROR";
+            if (c.Equals("-")) return $"{a} - {b} = {a - b}";
+            if (c.Equals("*")) return $"{a} * {b} = {a * b}";
+            return $"{a} + {b} = {a + b}";
+            
         }
 
         public IActionResult Privacy()
