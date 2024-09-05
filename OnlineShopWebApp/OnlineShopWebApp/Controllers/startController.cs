@@ -1,23 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
 using OnlineShopWebApp.Models;
 using System.Diagnostics;
-using System.Timers;
 
 namespace OnlineShopWebApp.Controllers
 {
-    public class HomeController : Controller
+    public class startController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
 
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        public IActionResult Index()
+        public string Hello()
         {
-            return View();
+            //switch (currentTime)
+            //{
+            //    case currentTime.
+            //    default:
+            //        break;
+            //}
+            //return currentTime.ToLocalTime();
+            return "te";
         }
 
         public IActionResult Privacy()
