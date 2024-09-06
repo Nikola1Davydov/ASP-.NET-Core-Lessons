@@ -1,0 +1,22 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Product Page";
+}
+<div class="row"> 
+    <div class="col-6 card shadow">
+        <div class="card-body">
+            <a style="color:black" href="/product/index/@Model.Id">
+                <img class="card-img-top" src="@Model.FilePath" />
+                <h5>@Model.Name</h5>
+            </a>
+            <h5>@Model.Cost Euro</h5>
+            <a class="btn-dark" href="#" role="button">Add to Card</a>
+        </div>
+    </div>
+    <div class="col-6 card-title">
+        <a style="fill:black" role="button" href="/home/index">
+            <h5>Back to mainpage</h5>
+        </a>
+    </div>
+</div>

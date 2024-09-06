@@ -6,4 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\RevitBathtubs.png" />
+    <None Include="wwwroot\images\RevitDiningChairs.png" />
+    <None Include="wwwroot\images\RevitKitchenIslandsFamilies.png" />
+    <None Include="wwwroot\images\RevitMirrors.png" />
+  </ItemGroup>
+
 </Project>
