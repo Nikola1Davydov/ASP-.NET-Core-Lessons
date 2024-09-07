@@ -12,12 +12,11 @@
         public Product( string name, decimal cost, string filePath, string description) 
         {
             Id = instanceCounter;
+            instanceCounter +=1;
             Name = name; 
             Cost = cost;
             Description = description;
             FilePath = filePath;
-
-            instanceCounter +=1;
         }
 
         public override string ToString()

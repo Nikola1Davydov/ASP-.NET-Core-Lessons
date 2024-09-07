@@ -6,16 +6,29 @@ namespace OnlineShopWebApp.Controllers
 {
     public class CartController : Controller
     {
-        private readonly ProductRepository productRepository;
+        private readonly ProductsRepository productRepository;
 
         public CartController()
         {
-            productRepository = new ProductRepository();
+            productRepository = new ProductsRepository();
         }
 
         public IActionResult Index()
         {
-            return View();
+            var cart = CartsRepository.TryGetByUserId(Constants.UserId);
+            return View(cart);
+        }
+        public IActionResult Add(int productId)
+        {
+            var product = productRepository.TryGetById(productId);
+            CartsRepository.Add(product, Constants.UserId);
+            return RedirectToAction("Index");
+        }
+        public IActionResult RemoveFromCart(int productId)
+        {
+            var product = productRepository.TryGetById(productId);
+            CartsRepository.Remove(product, Constants.UserId);
+            return RedirectToAction("Index");
         }
     }
 }

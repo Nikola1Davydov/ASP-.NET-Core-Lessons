@@ -2,11 +2,15 @@
 {
     public class Cart
     {
-        public List<Product> Products { get; set; }
-        public decimal TotalCost { get; }
-        public Cart ()
+        public Guid ProductId { get; set; }
+        public string UserId { get; set; }
+        public List<CartItem> CartItems { get; set; }
+        public decimal Cost
         {
-            TotalCost = Products.Sum(x => x.Cost);
+            get
+            {
+                return CartItems.Sum(x => x.Cost);
+            }
         }
     }
 }
