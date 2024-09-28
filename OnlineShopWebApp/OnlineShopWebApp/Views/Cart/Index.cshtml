@@ -36,8 +36,10 @@ else
                             <th>@item.Product.Cost Euro</th>
                             <th>@item.Amount</th>
                             <th>@item.Cost</th>
-                            <th><a class="btn btn-light" href="/cart/IncreaseProductInCart?productId=@item.Product.Id" role="button">+</a></th>
-                            <th><a class="btn btn-light" href="/cart/RemoveFromCart?productId=@item.Product.Id" role="button">-</a></th>
+                            <th>
+                                <a class="btn btn-dark" href="/cart/IncreaseProductInCart?productId=@item.Product.Id" role="button">+</a>
+                                        <a class="btn btn-dark" href="/cart/RemoveFromCart?productId=@item.Product.Id" role="button">-</a>
+                            </th>
                         </tr>
                     }
                 </tbody>

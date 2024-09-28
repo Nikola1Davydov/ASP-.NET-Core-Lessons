@@ -2,7 +2,7 @@
 
 namespace OnlineShopWebApp
 {
-    public class ProductsRepository : IProductsRepository
+    public class ProductsInMemoryRepository : IProductsRepository
     {
         //private static List<Product> products = new List<Product>()
         //{
@@ -13,7 +13,7 @@ namespace OnlineShopWebApp
         //};
 
         private List<Product> _products;
-        public ProductsRepository()
+        public ProductsInMemoryRepository()
         {
             _products = new List<Product>()
             {

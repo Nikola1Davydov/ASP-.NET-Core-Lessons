@@ -70,20 +70,20 @@ namespace OnlineShopWebApp
     //        }
     //    }
     //}
-    public class CartsRepository : ICartsRepository
+    public class CartsInMemoryRepository : ICartsRepository
     {
         private List<Cart> _carts;
-        public CartsRepository()
+        public CartsInMemoryRepository()
         {
             _carts = new List<Cart>();
         }
-        public List<Cart> InMemoryCartsRepository
+        public List<Cart> Carts
         {
             get { return _carts; }
         }
         public Cart TryGetByUserId(string userId)
         {
-            return InMemoryCartsRepository.FirstOrDefault(x => x.UserId == userId);
+            return Carts.FirstOrDefault(x => x.UserId == userId);
         }
         public void Add(Product product, string userId)
         {
@@ -105,7 +105,7 @@ namespace OnlineShopWebApp
                     }
                 };
 
-                InMemoryCartsRepository.Add(newCart);
+                Carts.Add(newCart);
             }
             else
             {
