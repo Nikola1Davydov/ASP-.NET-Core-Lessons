@@ -6,11 +6,11 @@ namespace OnlineShopWebApp.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductsRepository productRepository;
+        private readonly IProductsRepository productRepository;
 
-        public ProductController()
+        public ProductController(IProductsRepository _productsRepository)
         {
-            productRepository = new ProductsRepository();
+            productRepository = _productsRepository;
         }
 
         public IActionResult Index(int id)
