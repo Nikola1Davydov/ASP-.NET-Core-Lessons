@@ -17,6 +17,7 @@
 }
 else
 {
+    
     <div class="container mt-4">
         <h3>Review Your Products and Enter Delivery Information</h3>
             <!-- Products List -->
@@ -51,6 +52,7 @@ else
         </div>
 
         <!-- Contact Form for Delivery -->
+    <form method="post">
         <h3>Delivery Information</h3>
         <div class="form-group">
             <label for="FullName">Full Name</label>
@@ -78,7 +80,7 @@ else
 
         <div class="form-group">
             <label for="City" class="form-label">City</label>
-            <input type="text" class="form-control" id="City" required>
+            <input type="text" class="form-control" id="City" name="City" required>
             <div class="invalid-feedback">
                 Please enter your phone city.
             </div>
@@ -86,12 +88,14 @@ else
 
         <div class="form-group">
         <label for="DeliveryAddress">Delivery Address</label>
-            <input type="text" class="form-control" id="DeliveryAddress" required>
+            <input type="text" class="form-control" id="DeliveryAddress" name="DeliveryAddress" required>
             <div class="invalid-feedback">
                 Please provide a delivery address.
             </div>
         </div>
-        <a class="btn btn-primary mt-3" href="/OrderDelivery/SubmitOrder" role="button">Submit Order</a>
+        <button class="btn btn-primary mt-3" asp-controller="OrderDelivery" asp-action="SubmitOrder"></button>
+        @* <a class="btn btn-primary mt-3" href="/OrderDelivery/SubmitOrder" role="button">Submit Order</a> *@
+    </form>
     </div>
-
+    
 }
