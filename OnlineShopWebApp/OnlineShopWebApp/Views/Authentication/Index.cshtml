@@ -1,0 +1,23 @@
+﻿<div class="container-sm col-md-6 d-flex flex-column align-items-center">
+    <form method="post">
+        <h3 class="mb-2 text-center">Einloggen</h3>
+
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="Login" name="Login" placeholder="Login" required>
+        </div>
+
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" id="Passwort" name="Passwort" placeholder="Passwort" required>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="RememberMe" name="RememberMe" value="true">
+            <label for="RememberMe">Запомнить меня</label>
+        </div>
+    
+        <div class="mb-2">
+        <button class="btn btn-primary mt-3" asp-controller="Authentication" asp-action="Login">Login</button>
+        </div>
+    </form>
+         <a href="/Authentication/Registration">Registation</a>
+</div>

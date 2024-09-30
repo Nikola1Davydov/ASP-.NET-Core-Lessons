@@ -38,7 +38,7 @@ else
                             <th>@item.Cost</th>
                             <th>
                                 <a class="btn btn-dark" href="/cart/IncreaseProductInCart?productId=@item.Product.Id" role="button">+</a>
-                                        <a class="btn btn-dark" href="/cart/RemoveFromCart?productId=@item.Product.Id" role="button">-</a>
+                                <a class="btn btn-dark" href="/cart/RemoveFromCart?productId=@item.Product.Id" role="button">-</a>
                             </th>
                         </tr>
                     }
@@ -51,7 +51,7 @@ else
             <div class="text-center">
                 <a class="btn btn-primary" href="home/index" role="button">Weiter einkaufen</a>
                 <a class="btn btn-success" href="/OrderDelivery/Index?userId=@Model.UserId" role="button">zur Kasse gehen</a>
-                    <a class="btn btn-danger" href="/cart/CleanCart?userId=@Model.UserId" role="button">Alles in Kasse löschen</a>
+                <a class="btn btn-danger" href="/cart/CleanCart?userId=@Model.UserId" role="button">Alles in Kasse löschen</a>
             </div>
         </div>
     </div>
