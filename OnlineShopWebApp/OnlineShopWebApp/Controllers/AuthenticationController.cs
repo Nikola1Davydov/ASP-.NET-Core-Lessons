@@ -10,14 +10,14 @@ namespace OnlineShopWebApp.Controllers
         {
 
         }
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Login(Authentication authentication)
+        public IActionResult Login(Login login)
         {
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
 
         public IActionResult Registration()
@@ -25,7 +25,7 @@ namespace OnlineShopWebApp.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult RegistrationButton(Authentication authentication)
+        public IActionResult Registration(Registration registration)
         {
             return RedirectToAction("Registration");
         }

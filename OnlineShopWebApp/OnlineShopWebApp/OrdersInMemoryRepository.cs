@@ -4,11 +4,11 @@ namespace OnlineShopWebApp
 {
     public class OrdersInMemoryRepository : IOrdersRepository
     {
-        private List<Cart> _orders = new List<Cart>();
+        private List<Order> _orders = new List<Order>();
 
-        public void Add(Cart cart)
+        public void Add(Order order)
         {
-            _orders.Add(cart);
+            _orders.Add(order);
         }
     }
 }

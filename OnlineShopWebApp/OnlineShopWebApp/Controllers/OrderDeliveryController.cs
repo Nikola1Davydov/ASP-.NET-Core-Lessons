@@ -21,11 +21,17 @@ namespace OnlineShopWebApp.Controllers
             return View(productsInCart);
         }
         [HttpPost]
-        public IActionResult SubmitOrder(OrderDelivery orderDelivery)
+        public IActionResult SubmitOrder(UserDeliveryInfo user)
         {
             var existingCart = cartRepository.TryGetByUserId(Constants.UserId);
-            ordersRepository.Add(existingCart);
+            var order = new Order
+            {
+                UserDeliveryInfo = user,
+                CartItems = existingCart.CartItems
+            };
+            ordersRepository.Add(order);
             cartRepository.CleanCartRepository(Constants.UserId);
+
             return View();
         }
     }

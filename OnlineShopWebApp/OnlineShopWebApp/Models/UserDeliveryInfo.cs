@@ -1,6 +1,6 @@
 ﻿namespace OnlineShopWebApp.Models
 {
-    public class OrderDelivery
+    public class UserDeliveryInfo
     {
         public string FullName { get; set; }
         public string Email { get; set; }
