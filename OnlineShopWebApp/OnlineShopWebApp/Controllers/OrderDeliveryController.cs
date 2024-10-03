@@ -6,13 +6,13 @@ namespace OnlineShopWebApp.Controllers
 {
     public class OrderDeliveryController : Controller
     {
-        private readonly IProductsRepository productRepository;
         private readonly ICartsRepository cartRepository;
+        private readonly IOrdersRepository ordersRepository;
 
-        public OrderDeliveryController(IProductsRepository _productsRepository, ICartsRepository _cartRepository)
+        public OrderDeliveryController(IOrdersRepository _ordersRepository, ICartsRepository _cartRepository)
         {
-            productRepository = _productsRepository;
             cartRepository = _cartRepository;
+            ordersRepository = _ordersRepository;
         }
 
         public IActionResult Index(string userId)
@@ -20,11 +20,19 @@ namespace OnlineShopWebApp.Controllers
             var productsInCart = cartRepository.TryGetByUserId(userId);
             return View(productsInCart);
         }
-
-        public IActionResult SubmitOrder()
+        [HttpPost]
+        public IActionResult SubmitOrder(UserDeliveryInfo user)
         {
-            cartRepository.CleanCartRepository();
-            return RedirectToAction("Index");
+            var existingCart = cartRepository.TryGetByUserId(Constants.UserId);
+            var order = new Order
+            {
+                UserDeliveryInfo = user,
+                CartItems = existingCart.CartItems
+            };
+            ordersRepository.Add(order);
+            cartRepository.CleanCartRepository(Constants.UserId);
+
+            return View();
         }
     }
 }

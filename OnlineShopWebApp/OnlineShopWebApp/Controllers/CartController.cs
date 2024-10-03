@@ -42,9 +42,9 @@ namespace OnlineShopWebApp.Controllers
             cartRepository.Add(product, Constants.UserId);
             return RedirectToAction("Index");
         }
-        public IActionResult CleanCart()
+        public IActionResult CleanCart(string userId)
         {
-            cartRepository.CleanCartRepository();
+            cartRepository.CleanCartRepository(userId);
             return RedirectToAction("Index");
         }
     }
