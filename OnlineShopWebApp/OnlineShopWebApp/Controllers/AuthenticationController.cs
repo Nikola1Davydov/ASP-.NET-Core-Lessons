@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
-using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -17,6 +16,10 @@ namespace OnlineShopWebApp.Controllers
         [HttpPost]
         public IActionResult Login(Login login)
         {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return RedirectToAction("Login");
         }
 
@@ -27,6 +30,14 @@ namespace OnlineShopWebApp.Controllers
         [HttpPost]
         public IActionResult Registration(Registration registration)
         {
+            if (registration.Name == registration.Password)
+            {
+                ModelState.AddModelError("", "Name and password should not be the same ");
+            }
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return RedirectToAction("Registration");
         }
     }

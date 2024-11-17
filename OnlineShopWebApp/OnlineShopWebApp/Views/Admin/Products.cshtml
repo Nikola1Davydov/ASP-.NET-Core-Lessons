@@ -11,24 +11,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/Orders">Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/Users">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/Rolles">Rolles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Admin/Products">Products</a>
-                </li>
-            </ul>
-        </div> 
+        @await Html.PartialAsync("AdminLeftPanel")
         <div class="col-10">
-            <a href="#" class="btn btn-link">Create a new Product</a>
+            <a href="/Admin/AddProduct" class="btn btn-link">Create a new Product</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -46,8 +31,8 @@
                             <td>@product.Name</td>
                             <td>@product.Cost</td>
                             <td>
-                                <a href="#" class="btn btn-link">Редактировать</a>
-                                <a href="#" class="btn btn-link text-danger">Удалить</a>
+                                    <a href="/admin/EditProduct?productId=@product.Id" class="btn btn-link">Редактировать</a>
+                                <a href="/admin/RemoveProduct?productId=@product.Id" class="btn btn-link text-danger">Удалить</a>
                             </td>
                         </tr>
                     }
