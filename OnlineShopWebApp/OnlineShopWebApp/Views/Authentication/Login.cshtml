@@ -1,18 +1,27 @@
-﻿<div class="container-sm col-md-6 d-flex flex-column align-items-center">
+﻿@model Login
+
+<div class="container-sm col-md-6 d-flex flex-column align-items-center">
     <form method="post">
         <h3 class="mb-2 text-center">Einloggen</h3>
 
+        <div class="validation text-danger" asp-validation-summary="All"></div>
+
         <div class="form-group mb-2">
-            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Login" required minlength="2">
+            <label asp-for="UserName">UserName</label>
+            <input asp-for="UserName" class="form-control"/>
+            <span asp-validation-for="UserName"></span>
         </div>
 
         <div class="form-group mb-2">
-            <input type="password" class="form-control" id="Password" name="Password" placeholder="Password" required>
+            <label asp-for="Password">Password</label>
+            <input type="password" asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
         </div>
 
-        <div class="form-check mb-2">
-            <input type="checkbox" class="form-check-input" id="RememberMe" name="RememberMe" value="true">
-            <label for="RememberMe">Запомнить меня</label>
+        <div class="form-group mb-2">
+            <label asp-for="RememberMe">Запомнить меня</label>
+            <input type="checkbox" asp-for="RememberMe" />
+            <span asp-validation-for="RememberMe"></span>
         </div>
     
         <div class="mb-2">

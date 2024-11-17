@@ -1,0 +1,35 @@
+﻿@model List<Role>
+@{
+    ViewData["Title"] = "Roles list";
+}
+<div class="container">
+    <div class="row">
+        @await Html.PartialAsync("AdminLeftPanel")
+        <div class="col-10">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>List of Roles</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rolle in Model)
+                    {
+                        <tr>
+                            <td>@rolle.Id</td>
+                            <td>@rolle.Name</td>
+                            <td>
+                                <a href="/admin/RemoveRole?roleName=@rolle.Name" class="btn btn-danger" role="button">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div >
+                <a href="/admin/AddRole" type="button" class="btn btn-success">Добавить роль</a>
+            </div>
+        </div>
+    </div>
+</div>

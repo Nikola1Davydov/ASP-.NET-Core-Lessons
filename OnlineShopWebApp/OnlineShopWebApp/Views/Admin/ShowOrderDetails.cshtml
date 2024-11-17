@@ -1,0 +1,42 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Orders list";
+}
+<form method="post" asp-action="EditOrder" asp-controller="Admin" asp-route-orderId="@Model.Id">
+<div class="container">
+    <!-- Заголовок -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>@ViewData["Title"]</h3>
+        </div>
+    </div>
+    <div class="row">
+        @await Html.PartialAsync("AdminLeftPanel")
+        <div class="col-10">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Заказ № @Model.Nummer</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Дата и время оформления:</strong> @Model.DateCreated</li>
+                        <li><strong>Адрес доставки:</strong> @Model.UserDeliveryInfo.DeliveryAddress</li>
+                        <li><strong>Получатель:</strong> @Model.UserDeliveryInfo.FullName</li>
+                        <li><strong>Телефон:</strong> @Model.UserDeliveryInfo.Phone</li>
+                        <li><strong>Email:</strong> @Model.UserDeliveryInfo.Email</li>
+                        <li><strong>Комментарий:</strong> 123</li>
+                        <li><strong>Сумма заказа:</strong> @Model.Cost €</li>
+                        <li>
+                            <select asp-for="@Model.Status"
+                            asp-items="@Html.GetEnumSelectList<OrderStatusesEnum>()"
+                                class="form-control">
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-secondary mt-3">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

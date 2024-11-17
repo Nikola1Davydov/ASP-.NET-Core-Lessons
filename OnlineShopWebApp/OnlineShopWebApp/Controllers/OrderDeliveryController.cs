@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
-using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -18,20 +17,31 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Index(string userId)
         {
             var productsInCart = cartRepository.TryGetByUserId(userId);
+            if (productsInCart == null) { return NotFound(); }
             return View(productsInCart);
         }
         [HttpPost]
         public IActionResult SubmitOrder(UserDeliveryInfo user)
         {
+            
             var existingCart = cartRepository.TryGetByUserId(Constants.UserId);
-            var order = new Order
+            if (ModelState.IsValid)
             {
-                UserDeliveryInfo = user,
-                CartItems = existingCart.CartItems
-            };
-            ordersRepository.Add(order);
-            cartRepository.CleanCartRepository(Constants.UserId);
-
+                var order = new Order
+                {
+                    UserDeliveryInfo = user,
+                    //OrderStatuses = new List<string> { "Создан", "Обработан", "В пути", "Отменен", "Доставлен" },
+                    CartItems = existingCart.CartItems
+                };
+                //order.SelectedStatus = order.OrderStatuses.FirstOrDefault();
+                ordersRepository.Add(order);
+                cartRepository.CleanCartRepository(Constants.UserId);
+                return RedirectToAction("OrderConfirmation");
+            }
+            return View("Index", existingCart);
+        }
+        public IActionResult OrderConfirmation()
+        {
             return View();
         }
     }

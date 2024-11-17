@@ -4,7 +4,10 @@ namespace OnlineShopWebApp
 {
     public interface IProductsRepository
     {
-        List<Product> GetAllProducts { get; }
+        List<Product> GetAll();
         Product TryGetById(int id);
+        void Add(Product product);
+        void Remove(Product product);
+        void Update(Product product);
     }
 }
