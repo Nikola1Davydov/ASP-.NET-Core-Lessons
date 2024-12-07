@@ -1,6 +1,26 @@
 using OnlineShopWebApp;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
+
+Log.Logger = new LoggerConfiguration()
+    
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("ApplicationName", "Online Shop")
+                .WriteTo.Console()
+                .CreateLogger();
+
+Log.Information("Starting web application");
 var builder = WebApplication.CreateBuilder(args);
+
+//add logging
+builder.Services.AddSerilog((services, lc) => lc
+    .ReadFrom.Configuration(builder.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext()
+    .WriteTo.Console());
+
 
 // Add services to the container.
 builder.Services.AddSingleton<IOrdersRepository, OrdersInMemoryRepository>();
@@ -19,6 +39,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSerilogRequestLogging();
 //app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -28,7 +49,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "MyArea",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();

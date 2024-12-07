@@ -1,9 +1,10 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
 using System.Linq;
 
 namespace OnlineShopWebApp.Controllers
 {
+    [Area("Admin")]
     public class AdminController : Controller
     {
         private readonly IProductsRepository productRepository;
