@@ -8,12 +8,19 @@
     {
         <div class="col-3 card shadow">
             <div class="card-body">
-                <a style="color:black" href="/product/index/@product.Id">
+                <a style="color:black" 
+                    asp-controller="Product" 
+                    asp-action="Index" 
+                    asp-route-id="@product.Id">
                     <img class="card-img-top" src="@product.ImagePath" />
                     <h5>@product.Name</h5>   
                 </a>
                 <h5>@product.Cost Euro</h5>
-                <a class="btn btn-dark" href="/cart/add?productId=@product.Id" role="button">Add to Card</a>
+                <a class="btn btn-dark" 
+                    asp-controller="Cart"
+                    asp-action="Add"
+                    asp-route-productId="@product.Id"
+                role="button">Add to Card</a>
             </div>
         </div>
     } 

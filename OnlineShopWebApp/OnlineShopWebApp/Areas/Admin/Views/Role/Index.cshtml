@@ -21,14 +21,19 @@
                             <td>@rolle.Id</td>
                             <td>@rolle.Name</td>
                             <td>
-                                <a href="/admin/RemoveRole?roleName=@rolle.Name" class="btn btn-danger" role="button">Удалить</a>
+                                <a asp-area="Admin" 
+                                asp-controller="Role" 
+                                asp-action="Remove" 
+                                asp-route-roleName="@rolle.Name" class="btn btn-danger" role="button">Удалить</a>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
             <div >
-                <a href="/admin/AddRole" type="button" class="btn btn-success">Добавить роль</a>
+                <a asp-area="Admin"
+                   asp-controller="Role"
+                   asp-action="Add" type="button" class="btn btn-success">Добавить роль</a>
             </div>
         </div>
     </div>

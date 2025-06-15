@@ -1,12 +1,11 @@
 ﻿@model Product
 
 <div class="container-sm col-md-6 d-flex flex-column align-items-center">
-    <form method="post" asp-action="EditProduct" asp-controller="Admin">
-        <h3 class="mb-2 text-center">Edit Product</h3>
+    <form method="post" asp-area="Admin" asp-controller="Product" asp-action="Add">
+        <h3 class="mb-2 text-center">Add new Product</h3>
 
         <div class="validation text-danger" asp-validation-summary="All"></div>
 
-        <input type="hidden" name="Id" value="@Model?.Id"/>
         <div class="form-group mb-2">
             <label asp-for="Name">Name</label>
             <input asp-for="Name" class="form-control" />
@@ -25,7 +24,7 @@
             <span asp-validation-for="Description"></span>
         </div>
         <div class="mb-2">
-            <button type="submit" class="btn btn-secondary mt-3">Edit</button>
+            <button type="submit" class="btn btn-primary mt-3">AddProduct</button>
         </div>
     </form>
 </div>

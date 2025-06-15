@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Orders list";
 }
-<form method="post" asp-action="EditOrder" asp-controller="Admin" asp-route-orderId="@Model.Id">
+<form method="post" asp-area="Admin" asp-controller="Order" asp-action="Edit" asp-route-orderId="@Model.Id">
 <div class="container">
     <!-- Заголовок -->
     <div class="row">

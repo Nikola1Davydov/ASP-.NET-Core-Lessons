@@ -1,35 +1,33 @@
 using OnlineShopWebApp;
 using Serilog;
-using Serilog.Core;
-using Serilog.Events;
 
 
 Log.Logger = new LoggerConfiguration()
-    
+
                 .Enrich.FromLogContext()
                 .Enrich.WithProperty("ApplicationName", "Online Shop")
                 .WriteTo.Console()
                 .CreateLogger();
 
 Log.Information("Starting web application");
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 //add logging
 builder.Services.AddSerilog((services, lc) => lc
     .ReadFrom.Configuration(builder.Configuration)
-    .ReadFrom.Services(services)
     .Enrich.FromLogContext()
-    .WriteTo.Console());
+    .Enrich.WithProperty("ApplicationName", "Online Shop"));
 
 
 // Add services to the container.
 builder.Services.AddSingleton<IOrdersRepository, OrdersInMemoryRepository>();
-builder.Services.AddSingleton<IProductsRepository ,ProductsInMemoryRepository>();
-builder.Services.AddSingleton<ICartsRepository ,CartsInMemoryRepository>();
+builder.Services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>();
+builder.Services.AddSingleton<ICartsRepository, CartsInMemoryRepository>();
 builder.Services.AddSingleton<IRolesRepository, RolesInMemoryRepository>();
+builder.Services.AddSingleton<IUsersManager, UsersManager>();
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -38,6 +36,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseDeveloperExceptionPage();
 
 app.UseSerilogRequestLogging();
 //app.UseHttpsRedirection();

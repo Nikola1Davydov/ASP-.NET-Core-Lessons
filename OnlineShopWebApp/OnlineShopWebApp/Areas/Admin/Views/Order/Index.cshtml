@@ -35,7 +35,10 @@
                             <td>@order.DateCreated.ToShortDateString()</td>
                             <td>@order.DateCreated.ToShortTimeString()</td>
                             <td>
-                                <a href="/Admin/ShowOrderDetails?orderId=@order.Id" class="btn btn-link">Редактировать</a>
+                                <a asp-area="Admin" 
+                                asp-controller="Order"
+                                asp-action="Details"
+                                asp-route-orderId="@order.Id" class="btn btn-link">Редактировать</a>
                             </td>
                         </tr>
                     }

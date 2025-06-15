@@ -1,0 +1,42 @@
+﻿@model UserAccount
+@{
+    ViewData["Title"] = "User list";
+}
+
+<div class="row">
+    @await Html.PartialAsync("AdminLeftPanel")
+    <div class="col-6">
+        <table class="table">
+            <tr>
+                <td>Login</td>
+                <td> @Model.Name</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td> @Model.PhoneNumber</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td> @Model.Email</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td> @Model.Address</td>
+            </tr>
+
+        </table>
+        <br />
+
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Edit
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassport" asp-route-name="@Model.Name">Change Passport</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-name="@Model.Name">Delete User</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-name="@Model.Name">Edit User</a>
+                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-name="@Model.Name">Edit user rights</a>
+            </div>
+        </div>
+    </div>
+</div>

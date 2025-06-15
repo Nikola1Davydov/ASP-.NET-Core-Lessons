@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
-using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -15,7 +14,7 @@ namespace OnlineShopWebApp.Controllers
 
         public IActionResult Index(int id)
         {
-            var product = productRepository.TryGetById(id);
+            Product product = productRepository.TryGetById(id);
 
             return View(product);
         }

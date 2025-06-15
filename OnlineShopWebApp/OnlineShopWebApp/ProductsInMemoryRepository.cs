@@ -36,7 +36,7 @@ namespace OnlineShopWebApp
         }
         public void Update(Product product)
         {
-            Product existingProduct = _products.FirstOrDefault(x => x.Id == product.Id);
+            Product existingProduct = TryGetById(product.Id);
             if (existingProduct == null)
             {
                 return;

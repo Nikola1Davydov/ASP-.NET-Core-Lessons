@@ -13,7 +13,7 @@
     <div class="row">
         @await Html.PartialAsync("AdminLeftPanel")
         <div class="col-10">
-            <a href="/Admin/AddProduct" class="btn btn-link">Create a new Product</a>
+            <a asp-area="Admin" asp-controller="Product" asp-action="Add" class="btn btn-link">Create a new Product</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -31,8 +31,8 @@
                             <td>@product.Name</td>
                             <td>@product.Cost</td>
                             <td>
-                                    <a href="/admin/EditProduct?productId=@product.Id" class="btn btn-link">Редактировать</a>
-                                <a href="/admin/RemoveProduct?productId=@product.Id" class="btn btn-link text-danger">Удалить</a>
+                                <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@product.Id" class="btn btn-link">Редактировать</a>
+                                <a asp-area="Admin" asp-controller="Product" asp-action="Remove" asp-route-productId="@product.Id" class="btn btn-link text-danger">Удалить</a>
                             </td>
                         </tr>
                     }

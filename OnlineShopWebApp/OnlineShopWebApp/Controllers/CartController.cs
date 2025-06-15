@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
-using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -17,35 +16,31 @@ namespace OnlineShopWebApp.Controllers
 
         public IActionResult Index()
         {
-            //var cart = CartsRepository.TryGetByUserId(Constants.UserId);
-            var cart = cartRepository.TryGetByUserId(Constants.UserId);
+            Cart cart = cartRepository.TryGetByUserId(Constants.UserId);
             return View(cart);
         }
         public IActionResult Add(int productId)
         {
-            var product = productRepository.TryGetById(productId);
-            //CartsRepository.Add(product, Constants.UserId);
+            Product product = productRepository.TryGetById(productId);
             cartRepository.Add(product, Constants.UserId);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
-        public IActionResult RemoveFromCart(int productId)
+        public IActionResult Remove(int productId)
         {
-            var product = productRepository.TryGetById(productId);
-            //CartsRepository.Remove(product, Constants.UserId);
+            Product product = productRepository.TryGetById(productId);
             cartRepository.Remove(product, Constants.UserId);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
-        public IActionResult IncreaseProductInCart(int productId)
+        public IActionResult Increase(int productId)
         {
-            var product = productRepository.TryGetById(productId);
-            //CartsRepository.Remove(product, Constants.UserId);
+            Product product = productRepository.TryGetById(productId);
             cartRepository.Add(product, Constants.UserId);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
-        public IActionResult CleanCart(string userId)
+        public IActionResult Clean(string userId)
         {
             cartRepository.CleanCartRepository(userId);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

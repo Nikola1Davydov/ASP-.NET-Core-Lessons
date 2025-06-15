@@ -1,6 +1,7 @@
-﻿@model Role
+﻿@using OnlineShopWebApp.Areas.Admin.Models
+@model Role
 
-<form method="post" asp-action="AddRole" asp-controller="Admin">
+<form method="post" asp-area="Admin" asp-controller="Role" >
 <div class="container-sm col-md-6 d-flex flex-column align-items-center">
         <h3 class="mb-2 text-center">Add new Role</h3>
 
@@ -13,7 +14,7 @@
         </div>
 
         <div class="mb-2">
-            <button type="submit" class="btn btn-primary mt-3">AddRole</button>
+            <button asp-action="Add" type="submit" class="btn btn-primary mt-3">AddRole</button>
         </div>
 </div>
 </form>
